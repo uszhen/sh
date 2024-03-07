@@ -348,7 +348,7 @@ add_db() {
 
 reverse_proxy() {
       ip_address
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/reverse-proxy.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/reverse-proxy.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
       sed -i "s/0.0.0.0/$ipv4_address/g" /home/web/conf.d/$yuming.conf
       sed -i "s/0000/$duankou/g" /home/web/conf.d/$yuming.conf
@@ -451,7 +451,7 @@ fi
 
 cluster_python3() {
     cd ~/cluster/
-    curl -sS -O https://raw.githubusercontent.com/test-system/python-for-vps/main/cluster/$py_task
+    curl -sS -O https://raw.githubusercontent.com/uszhen/python-for-vps/main/cluster/$py_task
     python3 ~/cluster/$py_task
 }
 
@@ -1564,12 +1564,12 @@ EOF
       # 创建必要的目录和文件
       cd /home && mkdir -p web/html web/mysql web/certs web/conf.d web/redis web/log/nginx && touch web/docker-compose.yml
 
-      wget -O /home/web/nginx.conf https://raw.githubusercontent.com/test-system/nginx/main/nginx10.conf
-      wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/test-system/nginx/main/default10.conf
+      wget -O /home/web/nginx.conf https://raw.githubusercontent.com/uszhen/nginx/main/nginx10.conf
+      wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/uszhen/nginx/main/default10.conf
       default_server_ssl
 
       # 下载 docker-compose.yml 文件并进行替换
-      wget -O /home/web/docker-compose.yml https://raw.githubusercontent.com/test-system/docker/main/LNMP-docker-compose-10.yml
+      wget -O /home/web/docker-compose.yml https://raw.githubusercontent.com/uszhen/docker/main/LNMP-docker-compose-10.yml
 
       dbrootpasswd=$(openssl rand -base64 16) && dbuse=$(openssl rand -hex 4) && dbusepasswd=$(openssl rand -base64 8)
 
@@ -1588,7 +1588,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/wordpress.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/wordpress.com.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
       cd /home/web/html
@@ -1622,7 +1622,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/discuz.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/discuz.com.conf
 
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
@@ -1657,7 +1657,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/kdy.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/kdy.com.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
       cd /home/web/html
@@ -1690,7 +1690,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/maccms.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/maccms.com.conf
 
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
@@ -1701,7 +1701,7 @@ EOF
       cd /home/web/html/$yuming/template/ && wget https://github.com/test-system/Website_source_code/raw/main/DYXS2.zip && unzip DYXS2.zip && rm /home/web/html/$yuming/template/DYXS2.zip
       cp /home/web/html/$yuming/template/DYXS2/asset/admin/Dyxs2.php /home/web/html/$yuming/application/admin/controller
       cp /home/web/html/$yuming/template/DYXS2/asset/admin/dycms.html /home/web/html/$yuming/application/admin/view/system
-      mv /home/web/html/$yuming/admin.php /home/web/html/$yuming/vip.php && wget -O /home/web/html/$yuming/application/extra/maccms.php https://raw.githubusercontent.com/test-system/Website_source_code/main/maccms.php
+      mv /home/web/html/$yuming/admin.php /home/web/html/$yuming/vip.php && wget -O /home/web/html/$yuming/application/extra/maccms.php https://raw.githubusercontent.com/uszhen/Website_source_code/main/maccms.php
 
       restart_ldnmp
 
@@ -1730,7 +1730,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/dujiaoka.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/dujiaoka.com.conf
 
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
@@ -1792,7 +1792,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/flarum.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/flarum.com.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
       cd /home/web/html
@@ -1869,7 +1869,7 @@ EOF
       install_ssltls
       add_db
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/typecho.com.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/typecho.com.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
       cd /home/web/html
@@ -1904,8 +1904,8 @@ EOF
 
       cd /home && mkdir -p web/html web/mysql web/certs web/conf.d web/redis web/log/nginx && touch web/docker-compose.yml
 
-      wget -O /home/web/nginx.conf https://raw.githubusercontent.com/test-system/nginx/main/nginx10.conf
-      wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/test-system/nginx/main/default10.conf
+      wget -O /home/web/nginx.conf https://raw.githubusercontent.com/uszhen/nginx/main/nginx10.conf
+      wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/uszhen/nginx/main/default10.conf
       default_server_ssl
       docker rm -f nginx >/dev/null 2>&1
       docker rmi nginx nginx:alpine >/dev/null 2>&1
@@ -1927,7 +1927,7 @@ EOF
 
       install_ssltls
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/rewrite.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/rewrite.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
       sed -i "s/baidu.com/$reverseproxy/g" /home/web/conf.d/$yuming.conf
 
@@ -1949,7 +1949,7 @@ EOF
 
       install_ssltls
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/reverse-proxy.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/reverse-proxy.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
       sed -i "s/0.0.0.0/$reverseproxy/g" /home/web/conf.d/$yuming.conf
       sed -i "s/0000/$port/g" /home/web/conf.d/$yuming.conf
@@ -1968,7 +1968,7 @@ EOF
       add_yuming
       install_ssltls
 
-      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/test-system/nginx/main/html.conf
+      wget -O /home/web/conf.d/$yuming.conf https://raw.githubusercontent.com/uszhen/nginx/main/html.conf
       sed -i "s/yuming.com/$yuming/g" /home/web/conf.d/$yuming.conf
 
       cd /home/web/html
@@ -2294,8 +2294,8 @@ EOF
           systemctl restart fail2ban
           docker rm -f nginx
 
-          wget -O /home/web/nginx.conf https://raw.githubusercontent.com/test-system/nginx/main/nginx10.conf
-          wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/test-system/nginx/main/default10.conf
+          wget -O /home/web/nginx.conf https://raw.githubusercontent.com/uszhen/nginx/main/nginx10.conf
+          wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/uszhen/nginx/main/default10.conf
           default_server_ssl
           docker run -d --name nginx --restart always --network web_default -p 80:80 -p 443:443 -p 443:443/udp -v /home/web/nginx.conf:/etc/nginx/nginx.conf -v /home/web/conf.d:/etc/nginx/conf.d -v /home/web/certs:/etc/nginx/certs -v /home/web/html:/var/www/html -v /home/web/log/nginx:/var/log/nginx nginx:alpine
           docker exec -it nginx chmod -R 777 /var/www/html
@@ -3101,7 +3101,7 @@ EOF
                             docker rmi -f p3terx/aria2-pro
 
                             cd /home/ && mkdir -p docker/cloud && cd docker/cloud && mkdir temp_data && mkdir -vp cloudreve/{uploads,avatar} && touch cloudreve/conf.ini && touch cloudreve/cloudreve.db && mkdir -p aria2/config && mkdir -p data/aria2 && chmod -R 777 data/aria2
-                            curl -o /home/docker/cloud/docker-compose.yml https://raw.githubusercontent.com/test-system/docker/main/cloudreve-docker-compose.yml
+                            curl -o /home/docker/cloud/docker-compose.yml https://raw.githubusercontent.com/uszhen/docker/main/cloudreve-docker-compose.yml
                             cd /home/docker/cloud/ && docker-compose up -d
 
 
@@ -3145,7 +3145,7 @@ EOF
                     clear
                     install_docker
                     cd /home/ && mkdir -p docker/cloud && cd docker/cloud && mkdir temp_data && mkdir -vp cloudreve/{uploads,avatar} && touch cloudreve/conf.ini && touch cloudreve/cloudreve.db && mkdir -p aria2/config && mkdir -p data/aria2 && chmod -R 777 data/aria2
-                    curl -o /home/docker/cloud/docker-compose.yml https://raw.githubusercontent.com/test-system/docker/main/cloudreve-docker-compose.yml
+                    curl -o /home/docker/cloud/docker-compose.yml https://raw.githubusercontent.com/uszhen/docker/main/cloudreve-docker-compose.yml
                     cd /home/docker/cloud/ && docker-compose up -d
 
 
@@ -5318,7 +5318,7 @@ EOF
                           read -p "请输入批量执行的命令: " mingling
                           py_task=custom_tasks.py
                           cd ~/cluster/
-                          curl -sS -O https://raw.githubusercontent.com/test-system/python-for-vps/main/cluster/$py_task
+                          curl -sS -O https://raw.githubusercontent.com/uszhen/python-for-vps/main/cluster/$py_task
                           sed -i "s#Customtasks#$mingling#g" ~/cluster/$py_task
                           python3 ~/cluster/$py_task
                           ;;
