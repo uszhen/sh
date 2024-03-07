@@ -5266,7 +5266,7 @@ EOF
                           nano ~/cluster/servers.py
                           ;;
                       11)
-                          py_task=install_kejilion.py
+                          py_task=install_uszhen.py
                           cluster_python3
                           ;;
                       12)
