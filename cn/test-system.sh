@@ -71,7 +71,7 @@ break_end() {
       clear
 }
 
-kejilion() {
+uszhen() {
             a
             exit
 }
@@ -95,7 +95,7 @@ check_port() {
             echo -e "\e[1;31m端口 $PORT 已被占用，无法安装环境，卸载以下程序后重试！\e[0m"
             echo "$result"
             break_end
-            kejilion
+            uszhen
 
         fi
     else
@@ -888,7 +888,7 @@ case $choice in
               ;;
 
           0)
-              kejilion
+              uszhen
 
               ;;
 
@@ -1300,7 +1300,7 @@ EOF
               esac
               ;;
           0)
-              kejilion
+              uszhen
 
               ;;
           *)
@@ -1381,7 +1381,7 @@ EOF
               curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh && chmod +x ecs.sh && bash ecs.sh
               ;;
           0)
-              kejilion
+              uszhen
 
               ;;
           *)
@@ -1506,7 +1506,7 @@ EOF
           esac
               ;;
           0)
-              kejilion
+              uszhen
 
               ;;
           *)
@@ -1581,7 +1581,7 @@ EOF
       # 在 docker-compose.yml 文件中进行替换
       sed -i "s/webroot/$dbrootpasswd/g" /home/web/docker-compose.yml
       sed -i "s/uszhenYYDS/$dbusepasswd/g" /home/web/docker-compose.yml
-      sed -i "s/kejilion/$dbuse/g" /home/web/docker-compose.yml
+      sed -i "s/uszhen/$dbuse/g" /home/web/docker-compose.yml
 
       install_ldnmp
 
@@ -1634,7 +1634,7 @@ EOF
       cd /home/web/html
       mkdir $yuming
       cd $yuming
-      wget https://hub.gitmirror.com/https://github.com/kejilion/Website_source_code/raw/main/Discuz_X3.5_SC_UTF8_20230520.zip
+      wget https://hub.gitmirror.com/https://github.com/uszhen/Website_source_code/raw/main/Discuz_X3.5_SC_UTF8_20230520.zip
       unzip -o Discuz_X3.5_SC_UTF8_20230520.zip
       rm Discuz_X3.5_SC_UTF8_20230520.zip
 
@@ -1703,7 +1703,7 @@ EOF
       mkdir $yuming
       cd $yuming
       wget https://hub.gitmirror.com/https://github.com/magicblack/maccms_down/raw/master/maccms10.zip && unzip maccms10.zip && rm maccms10.zip
-      cd /home/web/html/$yuming/maccms10-master/template/ && wget https://hub.gitmirror.com/https://github.com/kejilion/Website_source_code/raw/main/DYXS2.zip && unzip DYXS2.zip && rm /home/web/html/$yuming/maccms10-master/template/DYXS2.zip
+      cd /home/web/html/$yuming/maccms10-master/template/ && wget https://hub.gitmirror.com/https://github.com/uszhen/Website_source_code/raw/main/DYXS2.zip && unzip DYXS2.zip && rm /home/web/html/$yuming/maccms10-master/template/DYXS2.zip
       cp /home/web/html/$yuming/maccms10-master/template/DYXS2/asset/admin/Dyxs2.php /home/web/html/$yuming/maccms10-master/application/admin/controller
       cp /home/web/html/$yuming/maccms10-master/template/DYXS2/asset/admin/dycms.html /home/web/html/$yuming/maccms10-master/application/admin/view/system
       mv /home/web/html/$yuming/maccms10-master/admin.php /home/web/html/$yuming/maccms10-master/vip.php && wget -O /home/web/html/$yuming/maccms10-master/application/extra/maccms.php https://raw.githubusercontent.com/uszhen/Website_source_code/main/maccms.php
@@ -2429,7 +2429,7 @@ EOF
         ;;
 
     0)
-        kejilion
+        uszhen
       ;;
 
     *)
@@ -3647,7 +3647,7 @@ EOF
 
 
           0)
-              kejilion
+              uszhen
               ;;
           *)
               echo "无效的输入!"
@@ -3754,7 +3754,7 @@ EOF
               tmux list-sessions
               ;;
           0)
-              kejilion
+              uszhen
               ;;
           *)
               echo "无效的输入!"
@@ -5177,7 +5177,7 @@ EOF
               reboot
               ;;
           0)
-              kejilion
+              uszhen
 
               ;;
           *)
@@ -5356,7 +5356,7 @@ EOF
               ;;
 
           0)
-              kejilion
+              uszhen
               ;;
           *)
               echo "无效的输入!"
@@ -5383,7 +5383,7 @@ EOF
     curl -sS -O https://raw.gitmirror.com/test-system.sh/main/test-system.sh && chmod +x test-system.sh
     echo "脚本已更新到最新版本！"
     break_end
-    kejilion
+    uszhen
     ;;
 
   0)
