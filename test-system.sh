@@ -476,12 +476,9 @@ tmux_run() {
 while true; do
 clear
 
-echo -e "\033[96m_  _ ____  _ _ _    _ ____ _  _ "
-echo "|_/  |___  | | |    | |  | |\ | "
-echo "| \_ |___ _| | |___ | |__| | \| "
-echo "                                "
-echo -e "\033[96m科技lion一键脚本工具 v2.3.3 （支持Ubuntu/Debian/CentOS/Alpine系统）\033[0m"
-echo -e "\033[96m-输入\033[93mk\033[96m可快速启动此脚本-\033[0m"
+echo -e "\033[96m↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ ↢ \033[0m"
+echo -e "\033[96m↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ ↣ \033[0m"
+echo -e "\033[96mtest-system v1.0 （Ubuntu/Debian/Centos/Alpine）\033[0m"
 echo "------------------------"
 echo "1. 系统信息查询"
 echo "2. 系统更新"
