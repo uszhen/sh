@@ -1,5 +1,5 @@
 #!/bin/bash
-ln -sf ~/test-system.sh /usr/local/bin/k
+ln -sf ~/test-system.sh /usr/local/bin/a
 
 
 ip_address() {
@@ -72,7 +72,7 @@ break_end() {
 }
 
 test-system() {
-            k
+            a
             exit
 }
 
