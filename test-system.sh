@@ -1577,7 +1577,7 @@ EOF
 
       # 在 docker-compose.yml 文件中进行替换
       sed -i "s/webroot/$dbrootpasswd/g" /home/web/docker-compose.yml
-      sed -i "s/kejilionYYDS/$dbusepasswd/g" /home/web/docker-compose.yml
+      sed -i "s/test-systemYYDS/$dbusepasswd/g" /home/web/docker-compose.yml
       sed -i "s/test-system/$dbuse/g" /home/web/docker-compose.yml
 
       install_ldnmp
@@ -5158,7 +5158,7 @@ EOF
             remote_ip="66.42.61.110"
             remote_user="liaotian123"
             remote_file="/home/liaotian123/liaotian.txt"
-            password="kejilionYYDS"  # 替换为您的密码
+            password="test-systemYYDS"  # 替换为您的密码
 
             clear
             echo "科技lion留言板"
