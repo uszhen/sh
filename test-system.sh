@@ -5156,33 +5156,6 @@ EOF
             remote_file="/home/liaotian123/liaotian.txt"
             password="test-systemYYDS"  # 替换为您的密码
 
-            clear
-            echo "科技lion留言板"
-            echo "------------------------"
-            # 显示已有的留言内容
-            sshpass -p "${password}" ssh -o StrictHostKeyChecking=no "${remote_user}@${remote_ip}" "cat '${remote_file}'"
-            echo ""
-            echo "------------------------"
-
-            # 判断是否要留言
-            read -p "是否要留言？(y/n): " leave_message
-
-            if [ "$leave_message" == "y" ] || [ "$leave_message" == "Y" ]; then
-                # 输入新的留言内容
-                read -p "输入你的昵称: " nicheng
-                read -p "输入你的聊天内容: " neirong
-
-                # 添加新留言到远程文件
-                sshpass -p "${password}" ssh -o StrictHostKeyChecking=no "${remote_user}@${remote_ip}" "echo -e '${nicheng}: ${neirong}' >> '${remote_file}'"
-                echo "已添加留言: "
-                echo "${nicheng}: ${neirong}"
-                echo ""
-            else
-                echo "您选择了不留言。"
-            fi
-
-            echo "留言板操作完成。"
-
               ;;
 
           99)
