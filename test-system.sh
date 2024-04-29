@@ -473,6 +473,26 @@ tmux_run() {
 
 
 
+server_reboot() {
+
+    read -p $'\e[33m现在重启服务器吗？(Y/N): \e[0m' rboot
+    case "$rboot" in
+      [Yy])
+        echo "已重启"
+        reboot
+        ;;
+      [Nn])
+        echo "已取消"
+        ;;
+      *)
+        echo "无效的选择，请输入 Y 或 N。"
+        ;;
+    esac
+
+
+}
+
+
 while true; do
 clear
 
@@ -4572,14 +4592,14 @@ EOF
                         rm -f /etc/apt/sources.list.d/xanmod-release.list
                         rm -f check_x86-64_psabi.sh*
 
-                        reboot
+                        server_reboot
 
                           ;;
                       2)
                         apt purge -y 'linux-*xanmod1*'
                         update-grub
                         echo "XanMod内核已卸载。重启后生效"
-                        reboot
+                        server_reboot
                           ;;
                       0)
                           break  # 跳出循环，退出菜单
@@ -4651,7 +4671,7 @@ EOF
             echo "XanMod内核安装并BBR3启用成功。重启后生效"
             rm -f /etc/apt/sources.list.d/xanmod-release.list
             rm -f check_x86-64_psabi.sh*
-            reboot
+            server_reboot
 
               ;;
             [Nn])
