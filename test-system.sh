@@ -947,14 +947,14 @@ net.core.default_qdisc=fq_pie
 net.ipv4.tcp_congestion_control=bbr
 EOF
                     sysctl -p
-
-                      ;;
-                  2)
-                    sed -i '/net.core.default_qdisc=fq_pie/d' /etc/sysctl.conf
-                    sed -i '/net.ipv4.tcp_congestion_control=bbr/d' /etc/sysctl.conf
-                    sysctl -p
                     reboot
                       ;;
+                  #2)
+                    #sed -i '/net.core.default_qdisc=fq_pie/d' /etc/sysctl.conf
+                    #sed -i '/net.ipv4.tcp_congestion_control=bbr/d' /etc/sysctl.conf
+                    #sysctl -p
+                    #reboot
+                      #;;
                   0)
                       break  # 跳出循环，退出菜单
                       ;;
