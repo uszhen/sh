@@ -2814,7 +2814,7 @@ EOF
               ;;
           7)
             clear
-            curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh && chmod +x nezha.sh
+            curl -L https://raw.githubusercontent.com/nezhahq/master/script/install.sh  -o nezha.sh && chmod +x nezha.sh
             ./nezha.sh
               ;;
 
