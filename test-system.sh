@@ -937,16 +937,16 @@ case $choice in
               case $sub_choice in
                   1)
                     cat > /etc/sysctl.conf << EOF
-net.ipv4.tcp_slow_start_after_idle = 0
-net.ipv4.tcp_fastopen = 3
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.ip_forward = 1
-net.ipv4.tcp_no_metrics_save = 1
-net.ipv4.tcp_mtu_probing = 1
-net.core.default_qdisc = fq_pie
-net.ipv4.tcp_congestion_control = bbr
-net.ipv6.conf.all.disable_ipv6 = 1
-EOF
+                    net.ipv4.tcp_slow_start_after_idle = 0
+                    net.ipv4.tcp_fastopen = 3
+                    net.ipv4.tcp_tw_reuse = 1
+                    net.ipv4.ip_forward = 1
+                    net.ipv4.tcp_no_metrics_save = 1
+                    net.ipv4.tcp_mtu_probing = 1
+                    net.core.default_qdisc = fq_pie
+                    net.ipv4.tcp_congestion_control = bbr
+                    net.ipv6.conf.all.disable_ipv6 = 1
+                    EOF
                     sysctl -p
 
                       ;;
@@ -959,7 +959,7 @@ EOF
                     sed -i '/net.ipv4.tcp_mtu_probing = 1/d' /etc/sysctl.conf
                     sed -i '/net.core.default_qdisc = fq_pie/d' /etc/sysctl.conf
                     sed -i '/net.ipv4.tcp_congestion_control = bbr/d' /etc/sysctl.conf
-		    sed -i 'net.ipv6.conf.all.disable_ipv6 = 1/d' /etc/sysctl.conf
+		            sed -i 'net.ipv6.conf.all.disable_ipv6 = 1/d' /etc/sysctl.conf
                     sysctl -p
                     reboot
                       ;;
@@ -4705,16 +4705,16 @@ EOF
 
             # 步骤5：启用BBR3
             cat > /etc/sysctl.conf << EOF
-net.ipv4.tcp_slow_start_after_idle = 0
-net.ipv4.tcp_fastopen = 3
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.ip_forward = 1
-net.ipv4.tcp_no_metrics_save = 1
-net.ipv4.tcp_mtu_probing = 1
-net.core.default_qdisc = fq_pie
-net.ipv4.tcp_congestion_control = bbr
-net.ipv6.conf.all.disable_ipv6 = 1
-EOF
+            net.ipv4.tcp_slow_start_after_idle = 0
+            net.ipv4.tcp_fastopen = 3
+            net.ipv4.tcp_tw_reuse = 1
+            net.ipv4.ip_forward = 1
+            net.ipv4.tcp_no_metrics_save = 1
+            net.ipv4.tcp_mtu_probing = 1
+            net.core.default_qdisc = fq_pie
+            net.ipv4.tcp_congestion_control = bbr
+            net.ipv6.conf.all.disable_ipv6 = 1
+            EOF
             sysctl -p
             echo "XanMod内核安装并BBR3启用成功。重启后生效"
             rm -f /etc/apt/sources.list.d/xanmod-release.list
