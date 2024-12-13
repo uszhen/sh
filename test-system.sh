@@ -936,7 +936,7 @@ case $choice in
 
               case $sub_choice in
                   1)
-cat > /etc/sysctl.conf << EOF
+                    cat > /etc/sysctl.conf << EOF
 net.ipv4.tcp_slow_start_after_idle = 0
 net.ipv4.tcp_fastopen = 3
 net.ipv4.tcp_tw_reuse = 1
@@ -947,7 +947,6 @@ net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr
 net.ipv6.conf.all.disable_ipv6 = 1
 EOF
-					
                     sysctl -p
 
                       ;;
@@ -4705,7 +4704,7 @@ EOF
             apt install -y linux-xanmod-x64v$version
 
             # 步骤5：启用BBR3
-cat > /etc/sysctl.conf << EOF
+            cat > /etc/sysctl.conf << EOF
 net.ipv4.tcp_slow_start_after_idle = 0
 net.ipv4.tcp_fastopen = 3
 net.ipv4.tcp_tw_reuse = 1
@@ -4716,7 +4715,7 @@ net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr
 net.ipv6.conf.all.disable_ipv6 = 1
 EOF
-sysctl -p
+            sysctl -p
             echo "XanMod内核安装并BBR3启用成功。重启后生效"
             rm -f /etc/apt/sources.list.d/xanmod-release.list
             rm -f check_x86-64_psabi.sh*
