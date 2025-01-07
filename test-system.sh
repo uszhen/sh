@@ -946,6 +946,8 @@ net.ipv4.tcp_mtu_probing = 1
 net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr
 net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
                     sysctl -p
 
@@ -960,6 +962,8 @@ EOF
                     sed -i '/net.core.default_qdisc = fq_pie/d' /etc/sysctl.conf
                     sed -i '/net.ipv4.tcp_congestion_control = bbr/d' /etc/sysctl.conf
 		    sed -i '/net.ipv6.conf.all.disable_ipv6 = 1/d' /etc/sysctl.conf
+                    sed -i '/net.ipv6.conf.default.disable_ipv6 = 1/d' /etc/sysctl.conf
+                    sed -i '/net.ipv6.conf.lo.disable_ipv6 = 1/d' /etc/sysctl.conf
                     sysctl -p
                     reboot
                       ;;
@@ -4714,6 +4718,8 @@ net.ipv4.tcp_mtu_probing = 1
 net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr
 net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
             sysctl -p
             echo "XanMod内核安装并BBR3启用成功。重启后生效"
