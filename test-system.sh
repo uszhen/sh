@@ -4637,7 +4637,7 @@ EOF
                         version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
 
                         apt update -y
-                        apt install -y --no-install-recommends clang lld llvm libelf-dev linux-xanmod-x64v$version
+                        apt install -y linux-xanmod-x64v$version
 
                         echo "XanMod内核已更新。重启后生效"
                         rm -f /etc/apt/sources.list.d/xanmod-release.list
@@ -4705,7 +4705,7 @@ EOF
             version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
 
             apt update -y
-            apt install -y --no-install-recommends clang lld llvm libelf-dev linux-xanmod-x64v$version
+            apt install -y linux-xanmod-x64v$version
 
             # 步骤5：启用BBR3
             cat > /etc/sysctl.conf << EOF
