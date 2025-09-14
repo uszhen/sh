@@ -4693,7 +4693,6 @@ EOF
               break
             fi
 			
-			check_swap
             install wget gnupg
 
 			# wget -qO - https://dl.xanmod.org/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
