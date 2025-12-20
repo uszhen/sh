@@ -4620,7 +4620,7 @@ EOF
                   echo "------------------------"
                   echo "0. 返回上一级选单"
                   echo "------------------------"
-                  read -p "请输入你的选择: " sub_choice
+                  read -e -p "请输入你的选择: " sub_choice
 
                   case $sub_choice in
                       1)
@@ -4634,7 +4634,7 @@ EOF
                         echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
 
                         # version=$(wget -q https://dl.xanmod.org/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
-                        version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
+                        local version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
 
                         apt update -y
                         apt install -y linux-xanmod-x64v$version
@@ -4652,10 +4652,7 @@ EOF
                         echo "XanMod内核已卸载。重启后生效"
                         server_reboot
                           ;;
-                      0)
-                          break  # 跳出循环，退出菜单
-                          ;;
-
+						  
                       *)
                           break  # 跳出循环，退出菜单
                           ;;
@@ -4666,12 +4663,12 @@ EOF
 
           clear
           echo "请备份数据，将为你升级Linux内核开启BBR3"
-          echo "官网介绍: https://xanmod.org/"
+          echo "XanMod Kernel: https://xanmod.org/"
           echo "------------------------------------------------"
           echo "仅支持Debian/Ubuntu 仅支持x86_64架构"
           echo "VPS是512M内存的，请提前添加1G虚拟内存，防止因内存不足失联！"
           echo "------------------------------------------------"
-          read -p "确定继续吗？(Y/N): " choice
+          read -e -p "确定继续吗？(Y/N): " choice
 
           case "$choice" in
             [Yy])
@@ -4679,21 +4676,17 @@ EOF
                 . /etc/os-release
                 if [ "$ID" != "debian" ] && [ "$ID" != "ubuntu" ]; then
                     echo "当前环境不支持，仅支持Debian和Ubuntu系统"
-                    break
+                    break_end
+					linux_Settings
                 fi
             else
                 echo "无法确定操作系统类型"
-                break
+                break_end
+				linux_Settings
             fi
-
-            # 检查系统架构
-            arch=$(dpkg --print-architecture)
-            if [ "$arch" != "amd64" ]; then
-              echo "当前环境不支持，仅支持x86_64架构"
-              break
-            fi
-
-            install wget gnupg
+			
+			check_swap
+			install wget gnupg
 
             # wget -qO - https://dl.xanmod.org/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
             wget -qO - https://raw.githubusercontent.com/uszhen/sh/main/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
@@ -4702,7 +4695,7 @@ EOF
             echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
 
             # version=$(wget -q https://dl.xanmod.org/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
-            version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
+            local version=$(wget -q https://raw.githubusercontent.com/uszhen/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
 
             apt update -y
             apt install -y linux-xanmod-x64v$version
