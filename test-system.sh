@@ -4343,9 +4343,9 @@ EOF
 			while true; do
 				clear
 				echo "设置虚拟内存"
-				local swap_used=$(free -m | awk 'NR==3{print $3}')
-				local swap_total=$(free -m | awk 'NR==3{print $2}')
-				local swap_info=$(free -m | awk 'NR==3{used=$3; total=$2; if (total == 0) {percentage=0} else {percentage=used*100/total}; printf "%dM/%dM (%d%%)", used, total, percentage}')
+				swap_used=$(free -m | awk 'NR==3{print $3}')
+				swap_total=$(free -m | awk 'NR==3{print $2}')
+				swap_info=$(free -m | awk 'NR==3{used=$3; total=$2; if (total == 0) {percentage=0} else {percentage=used*100/total}; printf "%dM/%dM (%d%%)", used, total, percentage}')
 
 				echo -e "当前虚拟内存: ${gl_huang}$swap_info${gl_bai}"
 				echo "------------------------"
