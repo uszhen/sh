@@ -4338,76 +4338,52 @@ EOF
             ;;
 
           12)
+			root_use
+			send_stats "设置虚拟内存"
+			while true; do
+				clear
+				echo "设置虚拟内存"
+				local swap_used=$(free -m | awk 'NR==3{print $3}')
+				local swap_total=$(free -m | awk 'NR==3{print $2}')
+				local swap_info=$(free -m | awk 'NR==3{used=$3; total=$2; if (total == 0) {percentage=0} else {percentage=used*100/total}; printf "%dM/%dM (%d%%)", used, total, percentage}')
 
-            if [ "$EUID" -ne 0 ]; then
-              echo "请以 root 权限运行此脚本。"
-              exit 1
-            fi
+				echo -e "当前虚拟内存: ${gl_huang}$swap_info${gl_bai}"
+				echo "------------------------"
+				echo "1. 分配1024M         2. 分配2048M         3. 分配4096M         4. 自定义大小"
+				echo "------------------------"
+				echo "0. 返回上一级选单"
+				echo "------------------------"
+				read -e -p "请输入你的选择: " choice
 
-            clear
-            # 获取当前交换空间信息
-            swap_used=$(free -m | awk 'NR==3{print $3}')
-            swap_total=$(free -m | awk 'NR==3{print $2}')
+				case "$choice" in
+				  1)
+					send_stats "已设置1G虚拟内存"
+					add_swap 1024
 
-            if [ "$swap_total" -eq 0 ]; then
-              swap_percentage=0
-            else
-              swap_percentage=$((swap_used * 100 / swap_total))
-            fi
+					;;
+				  2)
+					send_stats "已设置2G虚拟内存"
+					add_swap 2048
 
-            swap_info="${swap_used}MB/${swap_total}MB (${swap_percentage}%)"
+					;;
+				  3)
+					send_stats "已设置4G虚拟内存"
+					add_swap 4096
 
-            echo "当前虚拟内存: $swap_info"
+					;;
 
-            read -p "是否调整大小?(Y/N): " choice
+				  4)
+					read -e -p "请输入虚拟内存大小（单位M）: " new_swap
+					add_swap "$new_swap"
+					send_stats "已设置自定义虚拟内存"
+					;;
 
-            case "$choice" in
-              [Yy])
-                # 输入新的虚拟内存大小
-                read -p "请输入虚拟内存大小MB: " new_swap
-
-                # 获取当前系统中所有的 swap 分区
-                swap_partitions=$(grep -E '^/dev/' /proc/swaps | awk '{print $1}')
-
-                # 遍历并删除所有的 swap 分区
-                for partition in $swap_partitions; do
-                  swapoff "$partition"
-                  wipefs -a "$partition"  # 清除文件系统标识符
-                  mkswap -f "$partition"
-                  echo "已删除并重新创建 swap 分区: $partition"
-                done
-
-                # 确保 /swapfile 不再被使用
-                swapoff /swapfile
-
-                # 删除旧的 /swapfile
-                rm -f /swapfile
-
-                # 创建新的 swap 分区
-                dd if=/dev/zero of=/swapfile bs=1M count=$new_swap
-                chmod 600 /swapfile
-                mkswap /swapfile
-                swapon /swapfile
-
-                if [ -f /etc/alpine-release ]; then
-                    echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-                    echo "nohup swapon /swapfile" >> /etc/local.d/swap.start
-                    chmod +x /etc/local.d/swap.start
-                    rc-update add local
-                else
-                    echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-                fi
-
-                echo "虚拟内存大小已调整为${new_swap}MB"
-                ;;
-              [Nn])
-                echo "已取消"
-                ;;
-              *)
-                echo "无效的选择，请输入 Y 或 N。"
-                ;;
-            esac
-            ;;
+				  *)
+					break
+					;;
+				esac
+			done
+			;;
 
           13)
               while true; do
