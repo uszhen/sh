@@ -8,7 +8,6 @@ ipv6_address=$(curl -s --max-time 1 ipv6.ip.sb)
 }
 
 
-
 install() {
     if [ $# -eq 0 ]; then
         echo "未提供软件包参数!"
